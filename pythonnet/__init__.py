@@ -30,7 +30,7 @@ def set_runtime(runtime: Union[clr_loader.Runtime, str], **params: str) -> None:
 def _get_params_from_env(prefix: str) -> Dict[str, str]:
     from os import environ
 
-    full_prefix = f"PYTHONNET_{prefix.upper()}"
+    full_prefix = f"PYTHONNET_{prefix.upper()}_"
     len_ = len(full_prefix)
 
     env_vars = {
@@ -79,9 +79,6 @@ def set_default_runtime() -> None:
     used.
     """
     from os import environ
-
-    print("Set default RUNTIME")
-    raise RuntimeError("Shouldn't be called here")
 
     spec = environ.get("PYTHONNET_RUNTIME", "default")
     runtime = _create_runtime_from_spec(spec)
